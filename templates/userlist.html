@@ -1,0 +1,27 @@
+{% load static %}
+
+<title>
+Mualliflar ro'yxati
+</title>
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+
+{% for author in authors %}
+<h3>
+    <ul>
+        <li class = "authorid" >idsi: {{ author.id }}</li>
+        <li class = "authorname" >Ismi: {{ author.first_name }}</li>
+        <li class = "authorlast" >Familyasi: {{ author.last_name }}</li>
+        <li class = "authorabout" >haqida: {{ author.about }}</li>
+        <li class = "authorpoem">Sherlari:
+            <ul>
+                {% for book in author.books.all %}
+                    <li>{{ book.title }}</li>
+                {% empty %}
+                    <li>Kitob topilmadi</li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+</h3>
+{% endfor %}

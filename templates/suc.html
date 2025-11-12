@@ -1,0 +1,10 @@
+{% load static %}
+<title>
+Malumotlar muvaffaqiyatli yuborildi
+</title>
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+<h3 class="data">Siz kiritgan malumotlar:</h3>
+<p class="dataname">Ism: {{ author.first_name }}</p>
+<p class="datalast">Familya: {{ author.last_name }}</p>
+<p class="databout">O'zingiz haqingizda: {{ author.about }}</p>
