@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Kitoblar{% endblock %}
+
+{% block content %}
+<h1>Kitoblar ro‘yxati</h1>
+<link rel="stylesheet" href="{% static 'css/crud.css' %}">
+
+<button>
+    <a href="{% url 'my_app:add_book_page' %}" class="create-book-link">Yangi kitob qo'shish</a>
+</button>
+
+{% if books %}
+    {% for b in books %}
+        <div class="book-crud-entry">
+            <h2 class="book-title">{{ b.title }}</h2>
+            <button>
+                 <a href="{% url 'my_app:edit_book_page' b.id %}" class="edit_book_link">
+                     Edit
+                 </a>
+            </button>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Hozircha kitoblar mavjud emas.</p>
+{% endif %}
+
+
+{% endblock %}

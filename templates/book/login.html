@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+        .login-box{
+            background:white;
+            padding:25px;
+            width:300px;
+            box-shadow:0 0 15px rgba(0,0,0,0.1);
+            border-radius:10px;
+        }
+        h2{
+            text-align:center;
+            margin-bottom:20px;
+        }
+        input{
+            width:100%;
+            padding:10px;
+            margin:8px 0;
+            border-radius:6px;
+            border:1px solid #ccc;
+        }
+        button{
+            width:100%;
+            padding:10px;
+            background:#007bff;
+            border:none;
+            color:white;
+            border-radius:6px;
+            cursor:pointer;
+        }
+        button:hover{
+            background:#0063cc;
+        }
+    </style>
+</head>
+<body>
+    <form class="login-box" method="POST">
+        {% csrf_token %}
+        <h2>Login</h2>
+
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Parol" required>
+
+        <button type="submit">Kirish</button>
+        <p>Akkount yoqmi? <a href="{% url 'my_app:signup_page' %}">akkaunt yaratish</a></p>
+
+    </form>
+</body>
+</html>

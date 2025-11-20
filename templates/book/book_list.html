@@ -1,0 +1,13 @@
+{% load static %}
+<div class="book-list-container">
+{% for b in books %}
+    <div class="book-item">
+        <h2 class="book-title">{{ b.title }}</h2>
+        <p class="book-author">Author: **{{ b.author }}**</p>
+        <p class="book-published">Published: {{ b.published_date }}</p>
+        <a href="{{ b.get_absolute_url }}" class="book-details-link">View Details</a>
+    </div>
+{% empty %}
+    <p class="no-books-message">No books available.</p>
+{% endfor %}
+</div>

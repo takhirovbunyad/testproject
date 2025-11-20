@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align:center;
+            padding-top:100px;
+            background:#fafafa;
+        }
+        a{
+            padding:10px 20px;
+            background:#e60000;
+            color:white;
+            text-decoration:none;
+            border-radius:6px;
+        }
+        a:hover{
+            background:#b30000;
+        }
+    </style>
+</head>
+<body>
+    <h2>Chiqishni tasdiqlaysizmi?</h2>
+    <a href="{% url 'logout_view' %}">Ha, chiqaman</a>
+</body>
+</html>

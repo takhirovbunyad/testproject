@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Kitoblar{% endblock %}
+
+{% block content %}
+<h1>Kitoblar ro‘yxati</h1>
+<link rel="stylesheet" href="{% static 'css/add.css' %}">
+
+<form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+
+        {% if model %}
+        <button type="save">saqlash</button>
+        {% else %}
+        <button type="submit">Yaratish</button>
+        {% endif %}
+</form>
+
+{% endblock %}

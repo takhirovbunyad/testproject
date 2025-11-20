@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ASOSIY SAHIFA{% endblock %}
+
+{% block content %}
+<div class="homepage-content">
+    <div class="welcome-message">
+        <h1 class="welcome-title">Kutubxonamizga Xush Kelibsiz!</h1>
+        <p class="welcome-text">Bu yerda siz eng so'nggi kitoblarni topishingiz mumkin.</p>
+        <p class="welcome-text">Yoki oz kitoblaringizni boshqalar bilan baham korishingiz mumkin.</p>
+    </div>
+
+    {% include 'book/book_list.html' %}
+</div>
+{% endblock %}

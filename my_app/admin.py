@@ -1,6 +1,13 @@
 from django.contrib import admin
-from .models import Author, Books
+from .models import Book , Comment
 
-admin.site.register(Books)
-admin.site.register(Author)
-# Register your models here.
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'publish', 'status')
+    list_filter = ('status', 'created', 'publish', 'author')
+    search_fields = ('title', 'body')
+    prepopulated_fields = {'slug': ('title',)}
+    raw_id_fields = ('author',)
+    date_hierarchy = 'publish'
+    ordering = ('status', 'publish')
+admin.site.register(Comment)

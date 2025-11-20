@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<div class="book-detail-page">
+    <p class="publish-info">
+        Published **{{ book.publish }}** by **{{ book.author }}**
+    </p>
+    <div class="book-body-content">
+        {{ book.body|linebreaks }}
+    </div>
+
+    <p class="share-link-wrapper">
+        <a href="{% url "my_app:book_share" book.id %}" class="share-link">
+            Share this post
+        </a>
+    </p>
+
+    {% with comments.count as total_comments %}
+    <div class="comments-count">
+        <h2 class="comments-heading">
+            {{ total_comments }} comment{{ total_comments|pluralize }}
+        </h2>
+    </div>
+    {% endwith %}
+
+    <div class="comments-list">
+        {% for comment in comments %}
+        <div class="comment-item">
+            <p class="comment-info">
+                Comment {{ forloop.counter }} by **{{ comment.name }}** {{ comment.created }}
+            </p>
+            <div class="comment-body">
+                {{ comment.body|linebreaks }}
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-comments-message">There are no comments yet.</p>
+        {% endfor %}
+    </div>
+
+    <div class="comment-form-section">
+        {% if new_comment %}
+        <h2 class="comment-success-message">Your comment has been added.</h2>
+        {% else %}
+        <h2 class="add-comment-heading">Add a new comment</h2>
+        <form method="post" class="comment-form">
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Add comment" class="submit-btn"></p>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

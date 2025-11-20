@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Share a post{% endblock %}
+
+{% block content %}
+<div class="share-page-container">
+    {% if sent %}
+        <div class="email-success-message">
+            <h1 class="success-title">E-mail successfully sent ✉️</h1>
+            <p class="success-detail">
+                "**{{ book.title }}**" was successfully sent to **{{ form.cleaned_data.to }}**.
+            </p>
+        </div>
+    {% else %}
+        <div class="email-share-section">
+            <h1 class="share-title">Share "**{{ book.title }}**" by e-mail</h1>
+
+            <form method="post" class="share-email-form comment-form">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <p>
+                    <input type="submit" value="Send e-mail" class="submit-btn send-email-btn">
+                </p>
+            </form>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

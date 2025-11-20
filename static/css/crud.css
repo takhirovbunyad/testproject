@@ -1,0 +1,67 @@
+/* ================== Umumiy sahifa uslublari ================== */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f9; /* engil fon */
+    color: #333;
+    padding: 20px;
+    margin: 0;
+}
+
+/* ================== Sarlavha ================== */
+.crud-title {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    display: inline-block;
+    padding-bottom: 6px;
+}
+
+/* ================== Book entry container ================== */
+.book-crud-entry {
+    max-width: 600px;
+    margin: 15px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effekti */
+.book-crud-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ================== List va li ================== */
+.book-crud-entry ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.book-crud-entry li {
+    padding: 10px 0;
+}
+
+/* ================== Book title ================== */
+.book-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+}
+
+/* ================== Responsive ================== */
+@media (max-width: 768px) {
+    .book-crud-entry {
+        padding: 15px;
+    }
+
+    .book-title {
+        font-size: 1.3em;
+    }
+}

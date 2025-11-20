@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="main-content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <div class="sidebar-container">
+            <aside class="sidebar">
+                <h2 class="sidebar-heading">Sidebar</h2>
+                <ul class="sidebar-nav">
+                    <li class="nav-item"><a href="{% url 'my_app:homepage' %}" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="{% url 'my_app:stats_page' %}" class="nav-link">Statistika</a></li>
+                    <li class="nav-item"><a href="{% url 'my_app:book_list_page' %}" class="nav-link">Malumotlar</a></li>
+                    <li class="logout"><a href="{% url 'my_app:logout_page' %}" class="logout">Logout</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>

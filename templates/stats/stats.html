@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Statistika{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/stats.css' %}">
+
+{% if books_len and users_len %}
+<h1 class="stats-title">Kitoblar statistikasi</h1>
+<div class="stats-overview">
+    <p class="total-books">Jami kitoblar soni: <strong>{{ books_len }}</strong></p>
+    <p class="total-authors">Jami mualliflar soni: <strong>{{ users_len }}</strong></p>
+</div>
+{% else %}
+<p class="no-stats-message">Hozircha statistik ma'lumotlar mavjud emas.</p>
+{% endif %}
+
+{% endblock %}
