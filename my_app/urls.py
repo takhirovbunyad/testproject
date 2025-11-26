@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.BookListView.as_view(), name='homepage'),
     path('<int:year>/<int:month>/<int:day>/<slug:slug>/', views.book_detail, name='book_detail'),
     path('<int:book_id>/share/', views.book_share, name='book_share'),
+    path('<int:book_id>/delete/' , views.book_delete, name='book_delete'),
     path('login/', views.login_view, name='login_page'),
     path('signup/', views.SignUpView.as_view(), name='signup_page'),
     path('logout/', views.logout_view, name='logout_page'),

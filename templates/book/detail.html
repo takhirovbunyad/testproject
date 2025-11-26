@@ -43,6 +43,7 @@
     <div class="comment-form-section">
         {% if new_comment %}
         <h2 class="comment-success-message">Your comment has been added.</h2>
+        <a href="{{ book.get_absolute_url }}" class="submit-btn">Sahifani yangilash</a>
         {% else %}
         <h2 class="add-comment-heading">Add a new comment</h2>
         <form method="post" class="comment-form">

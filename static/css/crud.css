@@ -1,67 +1,187 @@
-/* ================== Umumiy sahifa uslublari ================== */
+/* ===== GLOBAL RESET ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7f9; /* engil fon */
-    color: #333;
-    padding: 20px;
     margin: 0;
+    padding: 40px 20px;
+    font-family: "Inter", system-ui;
+    background: linear-gradient(120deg, #eef1f8, #dde3ee);
+    color: #1c1e21;
+    min-height: 100vh;
 }
 
-/* ================== Sarlavha ================== */
-.crud-title {
+/* ===== LAYOUT WRAPPER ===== */
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+/* ===== PAGE TITLE ===== */
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
     text-align: center;
-    font-size: 2em;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
+    margin-bottom: 50px;
+    background: linear-gradient(90deg, #5562ff, #28c7b7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ===== CREATE BOOK BUTTON ===== */
+.create-book-wrapper {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.create-book-link {
     display: inline-block;
-    padding-bottom: 6px;
+    background: linear-gradient(135deg, #5562ff, #27c4a8);
+    padding: 16px 42px;
+    color: white;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: .3px;
+    text-decoration: none;
+    box-shadow:
+        0 10px 30px rgba(85, 98, 255, 0.25),
+        inset 0 -4px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
 }
 
-/* ================== Book entry container ================== */
+.create-book-link:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 18px 40px rgba(85, 98, 255, 0.35),
+        inset 0 -4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== CRUD CARD ===== */
 .book-crud-entry {
-    max-width: 600px;
-    margin: 15px auto;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    padding: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 22px;
+    padding: 34px;
+    margin: 26px 0;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow:
+        0 8px 24px rgba(0,0,0,0.07),
+        inset 0 0 0 0 rgba(0,0,0,0);
+    position: relative;
+    transition: 0.35s ease;
 }
 
-/* Hover effekti */
 .book-crud-entry:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transform: translateY(-6px);
+    box-shadow:
+        0 20px 48px rgba(0,0,0,0.12);
 }
 
-/* ================== List va li ================== */
-.book-crud-entry ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Left Accent */
+.book-crud-entry::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, #5562ff, #2ac7b9);
+    border-radius: 22px 0 0 22px;
 }
 
-.book-crud-entry li {
-    padding: 10px 0;
-}
-
-/* ================== Book title ================== */
+/* ===== TITLE / TEXT ===== */
 .book-title {
-    font-size: 1.5em;
+    font-size: 2rem;
     font-weight: 700;
-    color: #333;
-    text-align: center;
+    margin: 0 0 15px;
 }
 
-/* ================== Responsive ================== */
-@media (max-width: 768px) {
-    .book-crud-entry {
-        padding: 15px;
-    }
+.book-body {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #50555a;
+    background: rgba(245,247,250,0.65);
+    padding: 18px;
+    border-radius: 12px;
+    border-left: 5px solid #27c4a8;
+}
 
-    .book-title {
-        font-size: 1.3em;
-    }
+/* Author + Created */
+.book-author {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #27c4a8;
+    margin: 14px 0;
+}
+
+.book-created {
+    font-size: 0.9rem;
+    color: #9aa1ac;
+    margin-top: 6px;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.actions {
+    margin-top: 26px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.actions a {
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.94rem;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+/* Edit */
+.edit_book_link {
+    background: #5562ff;
+    color: white;
+}
+
+.edit_book_link:hover {
+    background: #4653e3;
+    transform: translateY(-2px);
+}
+
+/* Delete */
+.actions a[href*="delete"] {
+    background: #ff6b6b;
+    color: white;
+}
+
+.actions a[href*="delete"]:hover {
+    background: #e15252;
+    transform: translateY(-2px);
+}
+
+/* ===== EMPTY STATE ===== */
+p.empty-message {
+    margin-top: 70px;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #7a838e;
+    background: rgba(255,255,255,0.8);
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.06);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 650px) {
+    body { padding: 20px; }
+    h1 { font-size: 2.3rem; }
+    .book-crud-entry { padding: 26px; }
+    .book-title { font-size: 1.6rem; }
+    .actions { justify-content: center; }
 }

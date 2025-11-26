@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils.text import slugify
+
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -36,6 +38,10 @@ class Book(models.Model):
                                             self.publish.month,
                                             self.publish.day,
                                             self.slug])
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 class Comment(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=80)

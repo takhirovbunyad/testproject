@@ -14,6 +14,12 @@ def login_required_decorator(func):
     return login_required(func, login_url='my_app:login_page')
 
 @login_required_decorator
+def book_delete(request,book_id):
+    model = Book.objects.get(pk=book_id)
+    model.delete()
+    return redirect('my_app:book_list_page')
+
+@login_required_decorator
 def logout_view(request):
     logout(request)
     return redirect('my_app:logout_page')

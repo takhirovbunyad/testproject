@@ -4,27 +4,35 @@
 {% block title %}Kitoblar{% endblock %}
 
 {% block content %}
-<h1>Kitoblar ro‘yxati</h1>
 <link rel="stylesheet" href="{% static 'css/crud.css' %}">
 
-<button>
-    <a href="{% url 'my_app:add_book_page' %}" class="create-book-link">Yangi kitob qo'shish</a>
-</button>
+<div class="container">
+    <h1>Kitoblar roʻyxati</h1>
 
-{% if books %}
+    <div class="create-book-wrapper">
+        <a href="{% url 'my_app:add_book_page' %}" class="create-book-link">
+            Yangi kitob qo'shish
+        </a>
+    </div>
+
     {% for b in books %}
         <div class="book-crud-entry">
             <h2 class="book-title">{{ b.title }}</h2>
-            <button>
-                 <a href="{% url 'my_app:edit_book_page' b.id %}" class="edit_book_link">
-                     Edit
-                 </a>
-            </button>
+            <div class="book-body">{{ b.body }}</div>
+            <p class="book-author">Muallif: {{ b.author }}</p>
+            <p class="book-created">Qoʻshilgan: {{ b.created|date:"d.m.Y H:i" }}</p>
+
+            <div class="actions">
+                <a href="{% url 'my_app:edit_book_page' b.id %}" class="edit_book_link">Tahrirlash</a>
+                <a href="{% url 'my_app:book_delete' b.id %}"
+                   onclick="return confirm('Rostan oʻchirmoqchimisiz?')"
+                   class="delete_book_link">Oʻchirish</a>
+            </div>
         </div>
+    {% empty %}
+        <p>Hozircha hech qanday kitob qoʻshilmagan</p>
     {% endfor %}
-{% else %}
-    <p>Hozircha kitoblar mavjud emas.</p>
-{% endif %}
+</div>
 
 
 {% endblock %}
